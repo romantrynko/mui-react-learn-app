@@ -1,34 +1,22 @@
-import { Container, Grid, ThemeProvider, Typography } from '@mui/material';
-import TourCard from './components/TourCard';
 import './App.css';
-import theme from './theme/theme';
+import Home from './pages/Home';
 import SearchAppBar from './components/AppBar';
-import cities from './data.json';
+import theme from './theme/theme';
+import { ThemeProvider } from '@emotion/react';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Tour from './pages/Tour';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SearchAppBar />
-      <Container sx={{ marginY: 5 }}>
-        {cities.map((city) => (
-          <>
-            <Typography
-              key={city.name}
-              variant="h4"
-              component="h2"
-              marginTop={5}
-              marginBottom={3}
-            >
-              Top {city.name} tours
-            </Typography>
-            <Grid container spacing={5}>
-              {city.tours.map((tour) => (
-                <TourCard key={tour.name} tour={tour} />
-              ))}
-            </Grid>
-          </>
-        ))}
-      </Container>
+      <BrowserRouter>
+        <SearchAppBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Tour />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
