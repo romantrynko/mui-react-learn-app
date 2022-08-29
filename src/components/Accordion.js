@@ -43,7 +43,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CustomizedAccordions() {
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = React.useState('');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -90,7 +90,7 @@ export default function CustomizedAccordions() {
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Collapsible Group Item #3</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails >
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum

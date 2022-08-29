@@ -14,17 +14,13 @@ function srcset(image, size, rows = 1, cols = 1) {
 export default function QuiltedImageList() {
   return (
     <ImageList
-      sx={{ width: 300, height: 225, marginLeft: 1 }}
+      sx={{ marginLeft: 1 }}
       variant="quilted"
       cols={4}
       rowHeight={121}
     >
-      {itemData.map((item) => (
-        <ImageListItem
-          key={item.img}
-          cols={item.cols || 1}
-          rows={item.rows || 1}
-        >
+      {itemData.map((item, index) => (
+        <ImageListItem key={index} cols={item.cols || 1} rows={item.rows || 1}>
           <img
             {...srcset(item.img, 121, item.rows, item.cols)}
             alt={item.title}

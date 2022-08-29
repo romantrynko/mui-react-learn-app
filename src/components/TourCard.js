@@ -1,13 +1,31 @@
 import { Grid, Paper, Typography, Box, Rating } from '@mui/material';
 import { AccessTime } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const TourCard = ({ tour }) => {
-  const { name, duration, rating, numberOfReviews, price, image } = tour;
+  const { id, name, duration, rating, numberOfReviews, price, image } = tour;
+
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    navigate(`${id}`);
+  };
+
   return (
     <Grid item xs={3}>
-      <Paper elevation={3}>
+      <Paper
+        elevation={3}
+        onClick={() => clickHandler()}
+        sx={{
+          '&:hover': {
+            transform: 'scale(1.05)',
+            cursor: 'pointer',
+            background: '#cdfaec'
+          }
+        }}
+      >
         <img className="img" src={image} alt="img" />
-        <Box paddingX={1}>
+        <Box padding={3}>
           <Typography variant="subtitle1" component="h2">
             {name}
           </Typography>
@@ -45,7 +63,12 @@ const TourCard = ({ tour }) => {
             </Typography>
           </Box>
           <Box>
-            <Typography variant="h6" component="h2" marginLeft={0}>
+            <Typography
+              variant="h6"
+              component="h2"
+              marginLeft={0}
+              marginTop={2}
+            >
               From C ${price}
             </Typography>
           </Box>
