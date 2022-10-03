@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Tour />} />
         </Routes>
+        <div></div>
       </BrowserRouter>
     </ThemeProvider>
   );
